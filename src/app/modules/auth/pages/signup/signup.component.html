@@ -1,0 +1,40 @@
+<nz-layout class="layout-outer">
+    <nz-content>
+        <div class="inner-content">
+            <form [formGroup]="signupForm" (submit)="signup()" class="form" nz-form>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Пожалуйста введите ваше полное имя">
+                        <nz-input-group>
+                            <input formControlName="fullName" type="text" nz-input placeholder="ФИО"/>
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Пожалуйста введите ваше имя пользователя">
+                        <nz-input-group>
+                            <input formControlName="login" type="text" nz-input placeholder="Имя пользователя"/>
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Пожалуйста введите ваш пароль">
+                        <nz-input-group>
+                            <input formControlName="password" type="password" nz-input placeholder="Пароль"/>
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item class="mb-0">
+                    <nz-form-control nzErrorTip="Пожалуйста введите ваш пароль">
+                        <nz-input-group>
+                            <input formControlName="repPassword" type="password" nz-input placeholder="Повторите пароль"/>
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <div class="row--right mb-10 mt-10">
+                    <a class="login-form-forgot" routerLink="/login">Войти</a>
+                </div>
+                <button class="submit-button" nz-button nzType="primary">Зарегистрироваться</button>
+            </form>
+        </div>
+    </nz-content>
+</nz-layout>

@@ -1,0 +1,83 @@
+<nz-layout class="base-outer layout-outer">
+
+    <nz-sider
+            class="sider--secondary"
+            nzWidth="70px"
+    >
+        <div class="sider__company-item sider__company-item--color" [routerLink]="['company', 1]">
+            KD
+        </div>
+        <div class="sider__company-item sider__company-item--color" [routerLink]="['company', 2]">
+            IN
+        </div>
+        <div class="sider__company-item sider__company-item--color" [routerLink]="['company', 3]">
+            WP
+        </div>
+        <button (click)="showJoinModal()" class="sider__company-item sider__company-join-button">
+            <span nz-icon nzType="export" nzTheme="outline"></span>
+        </button>
+        <button class="sider__company-item sider__company-add-button" [routerLink]="['company', 'new']">
+            +
+        </button>
+    </nz-sider>
+
+    <nz-layout>
+
+        <nz-header class="header">
+            <div>
+
+                <button *ngIf="companySelected" nz-button nzType="primary">Добавить в компанию</button>
+
+                <button *ngIf="departmentSelected" nz-button nzType="primary">Добавить в департамент</button>
+
+                <button class="header__profile-button" nz-button nzSize="large" nz-dropdown [nzDropdownMenu]="profileMenu" nzPlacement="bottomRight">Профиль</button>
+                <nz-dropdown-menu #profileMenu="nzDropdownMenu">
+                    <ul nz-menu>
+<!--                        <li nz-menu-item>Профиль</li>-->
+                        <li (click)="logout()" nz-menu-item>Выйти</li>
+                    </ul>
+                </nz-dropdown-menu>
+
+            </div>
+        </nz-header>
+
+        <nz-layout>
+
+            <nz-content>
+                <router-outlet></router-outlet>
+            </nz-content>
+
+        </nz-layout>
+
+    </nz-layout>
+
+</nz-layout>
+
+<nz-modal
+        [(nzVisible)]="joinModalVisible"
+        nzTitle="Присоединиться к компании"
+        (nzOnCancel)="handleJoinCancel()"
+        (nzOnOk)="handleJoinOk()"
+        [nzFooter]="joinModalFooter"
+>
+
+    <ng-container *nzModalContent>
+        <form
+            nz-form
+            nzLayout="vertical"
+        >
+            <nz-form-item>
+                <nz-form-label nzRequired nzFor="joinCode">Введите код</nz-form-label>
+                <nz-form-control nzErrorTip="Введите пожалуйста код">
+                    <input [(ngModel)]="joinCode" [ngModelOptions]="{standalone: true}" nz-input style="width: 100%" id="joinCode" />
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-container>
+
+    <ng-template #joinModalFooter>
+        <button nz-button nzType="default" (click)="handleJoinCancel()">Отмена</button>
+        <button nz-button nzType="primary" (click)="handleJoinOk()" [nzLoading]="joinConfirmLoading">Войти</button>
+    </ng-template>
+
+</nz-modal>

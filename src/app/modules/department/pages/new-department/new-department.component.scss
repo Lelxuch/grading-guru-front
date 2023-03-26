@@ -1,0 +1,40 @@
+@import 'src/styles/base/variables';
+
+.content-outer {
+  padding: 25px;
+}
+
+::ng-deep {
+  .ant-select-selection-item {
+    background: #fff !important;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #0A0D4EF6;
+  border-radius: $border-radius-0;
+  padding: 10px;
+
+  nz-form-item:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sections__header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.section__item {
+  border: 1px solid #0A0D4EF6;
+  border-radius: $border-radius-0;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.section__item__header {
+  display: flex;
+  justify-content: flex-end;
+}

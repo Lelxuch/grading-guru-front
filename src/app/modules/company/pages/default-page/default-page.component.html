@@ -1,0 +1,29 @@
+<nz-layout style="height: 100%">
+    <nz-sider
+            class="sider--primary"
+            nzWidth="250px"
+            nzBreakpoint="md"
+    >
+        <ul class="menu" nz-menu nzTheme="dark" nzMode="inline">
+            <li class="sider__add-dep">
+                <button [routerLink]="['department', 'new']" nz-button nzSize="large" nzType="primary">Создать департамент</button>
+            </li>
+            <li class="sub-menu sub-menu--departments" nz-submenu nzOpen nzTitle="Департаменты" nzIcon="unordered-list">
+                <ul>
+                    <li [routerLink]="['department', 1]" nz-menu-item nzMatchRouter>
+                        <a>Frontend</a>
+                    </li>
+                    <li [routerLink]="['department', 2]" nz-menu-item nzMatchRouter>
+                        <a>Backend</a>
+                    </li>
+                    <li [routerLink]="['department', 3]" nz-menu-item nzMatchRouter>
+                        <a>Mobile</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nz-sider>
+    <nz-content>
+        <router-outlet></router-outlet>
+    </nz-content>
+</nz-layout>

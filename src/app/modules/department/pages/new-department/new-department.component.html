@@ -1,0 +1,112 @@
+<div class="content-outer">
+    <form
+            [formGroup]="departmentForm"
+            (ngSubmit)="submit()"
+            class="form"
+            nz-form
+            nzLayout="vertical"
+    >
+
+        <nz-form-item>
+            <h1 nz-typography>Создание департамента</h1>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="formOffset" nzRequired nzFor="name">Название департамента</nz-form-label>
+            <nz-form-control [nzSpan]="formSpan" nzErrorTip="Введите пожалуйста название">
+                <input nz-input formControlName="name" id="name" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="formOffset" nzRequired>Секции</nz-form-label>
+            <nz-form-control [nzSpan]="formSpan">
+                <div class="sections" formArrayName="sections">
+                    <div class="sections__header">
+                        <button (click)="addSection()" nz-button nzType="default" type="button">Добавить</button>
+                    </div>
+                    <div
+                            *ngFor="let section of sections.controls; let i=index" [formGroupName]="i"
+                            class="section__item"
+                    >
+                        <div class="section__item__header">
+                            <button (click)="removeSection(i)" nz-button nzSize="small" nzType="default" type="button">
+                                <span nz-icon nzType="close" nzTheme="outline"></span>
+                            </button>
+                        </div>
+                        <nz-form-item>
+                            <nz-form-control [nzSpan]="formSpan" nzErrorTip="">
+                                <nz-form-label [nzSm]="formOffset" nzRequired>Название секции</nz-form-label>
+                                <nz-form-control [nzSpan]="formSpan" nzErrorTip="Введите пожалуйста название">
+                                    <input nz-input formControlName="name" />
+                                </nz-form-control>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                            <nz-form-control [nzSpan]="formSpan" nzErrorTip="">
+                                <nz-form-label [nzSm]="formOffset" nzRequired>Вес секции</nz-form-label>
+                                <nz-form-control [nzSpan]="formSpan" nzErrorTip="Введите пожалуйста вес секции">
+                                    <nz-input-number-group style="width: 100%" nzAddOnAfter="%">
+                                        <nz-input-number formControlName="weight" (input)="changeWeight($event)"></nz-input-number>
+                                    </nz-input-number-group>
+                                </nz-form-control>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                            <nz-form-control [nzSpan]="formSpan" nzErrorTip="">
+                                <nz-form-label [nzSm]="formOffset" nzRequired>Навыки</nz-form-label>
+                                <nz-select nzMode="tags" formControlName="skills">
+                                    <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="formOffset" nzRequired>Уровни</nz-form-label>
+            <nz-form-control [nzSpan]="formSpan">
+                <div class="sections" formArrayName="levels">
+                    <div class="sections__header">
+                        <button (click)="addLevel()" nz-button nzType="default" type="button">Добавить</button>
+                    </div>
+                    <div
+                            *ngFor="let section of levels.controls; let i=index" [formGroupName]="i"
+                            class="section__item"
+                    >
+                        <div class="section__item__header">
+                            <button (click)="removeLevel(i)" nz-button nzSize="small" nzType="default" type="button">
+                                <span nz-icon nzType="close" nzTheme="outline"></span>
+                            </button>
+                        </div>
+                        <nz-form-item>
+                            <nz-form-control [nzSpan]="formSpan" nzErrorTip="">
+                                <nz-form-label [nzSm]="formOffset" nzRequired>Название уровня</nz-form-label>
+                                <nz-form-control [nzSpan]="formSpan" nzErrorTip="Введите пожалуйста название">
+                                    <input nz-input formControlName="name" />
+                                </nz-form-control>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                            <nz-form-control [nzSpan]="formSpan" nzErrorTip="">
+                                <nz-form-label [nzSm]="formOffset" nzRequired>Минимальный балл</nz-form-label>
+                                <nz-form-control [nzSpan]="formSpan" nzErrorTip="Введите пожалуйста минимальный уровень">
+                                    <input nz-input type="number" step="0.01" max="5" formControlName="minValue" />
+                                </nz-form-control>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="formSpan" [nzOffset]="formOffset">
+                <button class="submit-button" nz-button nzType="primary" type="submit">Создать</button>
+            </nz-form-control>
+        </nz-form-item>
+
+    </form>
+</div>

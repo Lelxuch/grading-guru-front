@@ -1,0 +1,24 @@
+<div class="content-outer">
+    <form class="form" nz-form [formGroup]="companyForm" (ngSubmit)="submit()">
+        <nz-form-item>
+            <h1 nz-typography>Создание компании</h1>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="formOffset" nzRequired nzFor="name">Название</nz-form-label>
+            <nz-form-control [nzSm]="12" nzErrorTip="Введите пожалуйста название">
+                <input nz-input formControlName="name" id="name" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="formOffset" nzFor="description">Описание</nz-form-label>
+            <nz-form-control [nzSm]="12" nzErrorTip="">
+                <textarea nz-input formControlName="description" id="description" rows="5"></textarea>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="12" [nzOffset]="formOffset">
+                <button class="submit-button" nz-button nzType="primary">Создать</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>
